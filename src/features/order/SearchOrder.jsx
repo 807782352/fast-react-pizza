@@ -13,7 +13,7 @@ export default function SearchOrder() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="md:ml-32">
       <input
         placeholder="Search Order #"
         value={query}
