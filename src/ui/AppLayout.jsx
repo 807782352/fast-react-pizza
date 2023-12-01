@@ -9,7 +9,7 @@ export default function AppLayout() {
   const isLoading = navigation.state === "loading";
 
   return (
-    <div className="layout">
+    <div >
       <Header />
 
       {isLoading && <Loader />}

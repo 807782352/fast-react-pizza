@@ -23,7 +23,7 @@ export async function getOrder(id) {
 export async function createOrder(newOrder) {
   try {
     const res = await axios.post(
-      `${API_URL}/order2`,
+      `${API_URL}/order`,
       JSON.stringify(newOrder),
       {
         headers: {
@@ -31,7 +31,7 @@ export async function createOrder(newOrder) {
         },
       }
     );
-    return res.data;
+    return res.data.data;
   } catch (error) {
     throw Error("Failed updating your order ...");
   }
