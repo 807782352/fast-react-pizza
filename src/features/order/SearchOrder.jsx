@@ -18,6 +18,7 @@ export default function SearchOrder() {
         placeholder="Search Order #"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
+        className="sm:46 w-32 md:w-72"
       />
     </form>
   );
