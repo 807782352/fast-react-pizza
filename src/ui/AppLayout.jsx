@@ -16,7 +16,7 @@ export default function AppLayout() {
       {/* {true && <Loader />} */}
 
       <div className="overflow-scroll">
-        <main className="mx-auto max-w-3xl">
+        <main className="mx-auto max-w-5xl">
           <Outlet />
         </main>
       </div>

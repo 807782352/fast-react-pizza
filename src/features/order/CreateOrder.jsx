@@ -1,6 +1,7 @@
 import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
 import { createOrder } from "../../services/apiRestaurant";
 import Button from "../../ui/Button";
+import { useSelector } from "react-redux";
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
@@ -35,6 +36,8 @@ const fakeCart = [
 function CreateOrder() {
   const navigation = useNavigation();
 
+  const username = useSelector((state) => state.user.username);
+
   // get possible errors
   const errors = useActionData();
 
@@ -52,25 +55,34 @@ function CreateOrder() {
       <Form method="POST">
         <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
           <label className="sm:basis-40">First Name</label>
-          <input type="text" name="customer" className="input grow" required />
+          <input type="text" name="customer" className="input grow" defaultValue={username} required />
         </div>
 
         <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
           <label className="sm:basis-40 ">Phone number</label>
           <div className="grow">
             <input type="tel" name="phone" className="input w-full" required />
-            {errors?.phone && <p className="text-xs mt-2 text-red-700 bg-red-100 p-2 rounded-md">{errors.phone}</p>}
+            {errors?.phone && (
+              <p className="mt-2 rounded-md bg-red-100 p-2 text-xs text-red-700">
+                {errors.phone}
+              </p>
+            )}
           </div>
         </div>
 
         <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
           <label className="sm:basis-40">Address</label>
           <div className="grow">
-            <input className="input w-full" type="text" name="address" required />
+            <input
+              className="input w-full"
+              type="text"
+              name="address"
+              required
+            />
           </div>
         </div>
 
-        <div className="mb-12 flex gap-5 items-center">
+        <div className="mb-12 flex items-center gap-5">
           <input
             type="checkbox"
             name="priority"
@@ -79,7 +91,9 @@ function CreateOrder() {
             // value={withPriority}
             // onChange={(e) => setWithPriority(e.target.checked)}
           />
-          <label htmlFor="priority" className="font-medium">Want to yo give your order priority?</label>
+          <label htmlFor="priority" className="font-medium">
+            Want to yo give your order priority?
+          </label>
         </div>
 
         <div>
