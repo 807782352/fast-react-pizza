@@ -12,8 +12,6 @@ import OrderItem from "./OrderItem";
 function Order() {
   const order = useLoaderData();
 
-  console.log(order);
-
   // Everyone can search for all orders, so for privacy reasons we're gonna gonna exclude names or address, these are only for the restaurant staff
   const {
     id,
@@ -55,7 +53,7 @@ function Order() {
         </p>
       </div>
 
-      <ul className="divide-y dive-stone-200 border-y">
+      <ul className="dive-stone-200 divide-y border-y">
         {cart.map((item) => (
           <OrderItem item={item} key={item.pizzaId} />
         ))}
